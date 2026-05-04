@@ -1,0 +1,19 @@
+DataFrame---->Name: ["A", "B", "C", "D", "E", "F", "F"],
+              Age: [15, 16, None, 15, 14, 16, 16],
+              StudyHours: [1, 2, 3, 4, 5, 2, 2],
+              City: ["Dhaka", "Sylhet", "Dhaka", "Chittagong", "Dhaka", "Sylhet", "Sylhet"],
+              Marks: [30, 40, 50, 60, 70, 40, 40],
+              Result: [0, 0, 1, 1, 1, 0, 0]
+              
+1.Remove duplicate rows
+2.Handle missing values in Age
+3.Find: Mean Age,Median Marks,Standard deviation of StudyHours
+4.Show distribution: Histogram of Marks,Boxplot of Age
+5.Encode City using One-Hot Encoding
+6.Scale: Age,StudyHours
+7.Split data into: 80% train,20% test
+8.Train 3 models: Logistic Regression,k-NN,Decision Tree
+9.For each model, calculate: Accuracy,Precision,Recall,F1-score
+10.Predict Marks using: Linear Regression and Evaluate using: MSE
+    
+
