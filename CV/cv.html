@@ -1,432 +1,276 @@
-
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;700&display=swap');
   
+  :root {
+    --primary: #1D9E75;
+    --primary-light: #F0F9F6;
+    --primary-dark: #0A5A43;
+    --border-color: #E2E8F0;
+    --text-main: #1A202C;
+    --text-sub: #4A5568;
+    --bg-secondary: #F8FAFC;
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body { background-color: #fff; }
 
   .cv-wrap {
     font-family: 'DM Sans', sans-serif;
-    color: var(--color-text-primary);
-    max-width: 700px;
+    color: var(--text-main);
+    max-width: 900px;
     margin: 0 auto;
-    padding: 2rem 0 3rem;
+    padding: 4rem 3rem;
+    line-height: 1.6;
   }
 
+  /* Header Section */
   .header {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2rem;
-    align-items: start;
-    padding-bottom: 1.5rem;
-    border-bottom: 2px solid var(--color-border-primary);
-    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2.5rem;
+    border-bottom: 3px solid var(--primary);
+    margin-bottom: 3rem;
   }
 
   .header-left h1 {
     font-family: 'DM Serif Display', serif;
-    font-size: 38px;
+    font-size: 48px;
     font-weight: 400;
-    letter-spacing: -0.5px;
     line-height: 1.1;
-    color: var(--color-text-primary);
+    margin-bottom: 10px;
   }
 
-  .header-left h1 em {
-    font-style: italic;
-    color: #1D9E75;
-  }
+  .header-left h1 em { font-style: italic; color: var(--primary); }
 
-  .header-left .tagline {
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--color-text-secondary);
-    margin-top: 6px;
-    letter-spacing: 1.5px;
+  .tagline {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-sub);
+    letter-spacing: 2.5px;
     text-transform: uppercase;
+    margin-bottom: 20px;
   }
 
   .contact-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 16px;
-    margin-top: 14px;
+    gap: 24px;
+    font-size: 14.5px;
   }
 
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12.5px;
-    color: var(--color-text-secondary);
-    text-decoration: none;
-  }
-
-  .contact-item a { color: #1D9E75; text-decoration: none; }
-  .contact-item i { font-size: 14px; color: #1D9E75; }
+  .contact-item { display: flex; align-items: center; gap: 8px; color: var(--text-sub); text-decoration: none; }
+  .contact-item strong { color: var(--primary); font-weight: 600; }
+  .contact-item a { color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--border-color); }
+  .contact-item a:hover { color: var(--primary); border-color: var(--primary); }
 
   .avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #1D9E75 0%, #0F6E56 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'DM Serif Display', serif;
-    font-size: 26px;
-    color: white;
-    flex-shrink: 0;
-    border: 3px solid #5DCAA5;
+    width: 110px;
+    height: 110px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 4px solid var(--primary-light);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   }
 
+  /* Intro Box */
+  .summary-box {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+  }
+
+  .summary-box p { font-size: 15.5px; color: var(--text-main); }
+
+  /* Grid Layout */
   .two-col {
     display: grid;
-    grid-template-columns: 1fr 220px;
-    gap: 2rem;
-    align-items: start;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 4rem;
   }
-
-  .section { margin-bottom: 1.8rem; }
 
   .section-label {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 2.5px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    color: #1D9E75;
-    margin-bottom: 10px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid #5DCAA5;
-  }
-
-  .exp-item { margin-bottom: 14px; }
-  .exp-item:last-child { margin-bottom: 0; }
-
-  .exp-title {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--color-text-primary);
-  }
-
-  .exp-org {
-    font-size: 12.5px;
-    color: #1D9E75;
-    font-weight: 400;
-  }
-
-  .exp-date {
-    font-size: 11.5px;
-    color: var(--color-text-tertiary);
-    margin-top: 1px;
-  }
-
-  .exp-desc {
-    font-size: 12.5px;
-    color: var(--color-text-secondary);
-    margin-top: 4px;
-    line-height: 1.6;
-  }
-
-  .skill-group { margin-bottom: 12px; }
-
-  .skill-group-label {
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--color-text-secondary);
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .skills-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-
-  .pill {
-    font-size: 11.5px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    border: 0.5px solid var(--color-border-secondary);
-    color: var(--color-text-secondary);
-    background: var(--color-background-secondary);
-  }
-
-  .pill.accent {
-    border-color: #5DCAA5;
-    color: #0F6E56;
-    background: #E1F5EE;
-  }
-
-  .award-item {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    margin-bottom: 10px;
-  }
-
-  .award-icon {
-    width: 28px;
-    height: 28px;
-    border-radius: var(--border-radius-md);
-    background: #E1F5EE;
+    color: var(--primary);
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+    gap: 15px;
   }
 
-  .award-icon i { font-size: 15px; color: #0F6E56; }
+  .section-label::after { content: ""; flex: 1; height: 2px; background: var(--primary-light); }
 
-  .award-text .award-name {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--color-text-primary);
-  }
+  /* Experience Items */
+  .exp-item { margin-bottom: 28px; }
+  .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .exp-title { font-size: 18px; font-weight: 700; color: var(--text-main); }
+  .exp-date { font-size: 13.5px; color: var(--text-sub); font-weight: 500; background: var(--primary-light); padding: 2px 8px; border-radius: 4px; }
+  .exp-org { font-size: 15px; color: var(--primary-dark); font-weight: 600; margin-bottom: 8px; }
+  .exp-desc { font-size: 14.5px; color: var(--text-sub); margin-top: 8px; }
+  
+  .bullet-list { list-style: none; margin-top: 10px; }
+  .bullet-list li { position: relative; padding-left: 20px; margin-bottom: 6px; font-size: 14.5px; color: var(--text-sub); }
+  .bullet-list li::before { content: "→"; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
 
-  .award-text .award-sub {
-    font-size: 11.5px;
-    color: var(--color-text-secondary);
-  }
+  /* Skills & Pills */
+  .skill-group { margin-bottom: 20px; }
+  .skill-cat { font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 10px; text-transform: uppercase; }
+  .pill-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill { font-size: 13px; padding: 6px 14px; border-radius: 6px; background: #fff; color: var(--text-sub); border: 1.5px solid var(--border-color); font-weight: 500; }
+  .pill.bold { background: var(--primary); color: #fff; border-color: var(--primary); }
 
-  .stat-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
+  /* Stats */
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 30px; }
+  .stat-card { background: var(--bg-secondary); padding: 18px; border-radius: 12px; text-align: center; border: 1px solid var(--border-color); }
+  .stat-val { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--primary); line-height: 1; }
+  .stat-lab { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-sub); margin-top: 5px; font-weight: 700; }
 
-  .stat-box {
-    background: var(--color-background-secondary);
-    border-radius: var(--border-radius-md);
-    padding: 10px 12px;
-    text-align: center;
-  }
-
-  .stat-box .stat-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 22px;
-    color: #1D9E75;
-    line-height: 1;
-  }
-
-  .stat-box .stat-lbl {
-    font-size: 10.5px;
-    color: var(--color-text-tertiary);
-    margin-top: 3px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .interest-row {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .interest-tag {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-size: 12.5px;
-    color: var(--color-text-secondary);
-  }
-
-  .interest-tag i { font-size: 14px; color: #5DCAA5; }
-
-  .ambassador-note {
-    background: #E1F5EE;
-    border: 0.5px solid #5DCAA5;
-    border-radius: var(--border-radius-lg);
-    padding: 14px 16px;
-    margin-bottom: 2rem;
-  }
-
-  .ambassador-note p {
-    font-size: 13px;
-    color: #0F6E56;
-    line-height: 1.7;
-  }
-
-  .ambassador-note strong {
-    font-weight: 500;
+  @media print {
+    .cv-wrap { padding: 0; }
+    .pill.bold { background: #1D9E75 !important; color: white !important; -webkit-print-color-adjust: exact; }
   }
 </style>
 
 <div class="cv-wrap">
-  <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Professional CV for Marufa — Campus Ambassador Application</h2>
-
-  <div class="header">
+  <header class="header">
     <div class="header-left">
       <h1>Sadekunnahar <em>Marufa</em></h1>
-      <p class="tagline">CSE Student · Designer · Developer · Leader</p>
+      <p class="tagline">CSE Student • UI/UX Designer • Tech Leader</p>
       <div class="contact-row">
-        <span class="contact-item"><i class="ti ti-map-pin" aria-hidden="true"></i> Jahangirnagar University, Dhaka</span>
-        <span class="contact-item"><i class="ti ti-brand-github" aria-hidden="true"></i><a href="https://github.com/ManamiMayoki" target="_blank">ManamiMayoki</a></span>
-        <span class="contact-item"><i class="ti ti-brand-linkedin" aria-hidden="true"></i><a href="https://www.linkedin.com/in/sadekunnahar-marufa-411b83362" target="_blank">LinkedIn</a></span>
-        <span class="contact-item"><i class="ti ti-world" aria-hidden="true"></i><a href="https://somagoam.com" target="_blank">somagoam.com</a></span>
+        <span class="contact-item"><strong>Location</strong> Savar, Dhaka</span>
+        <span class="contact-item"><strong>LinkedIn</strong> <a href="https://linkedin.com/in/sadekunnahar-marufa-411b83362">marufa-s</a></span>
+        <span class="contact-item"><strong>GitHub</strong> <a href="https://github.com/ManamiMayoki">ManamiMayoki</a></span>
+        <span class="contact-item"><strong>Web</strong> <a href="https://somagoam.com">somagoam.com</a></span>
       </div>
     </div>
-    <div class="avatar" aria-hidden="true"><img src="me.jpeg" alt="Marufa"></div>
-  </div>
+    <img src="me.jpeg" alt="Marufa" class="avatar">
+  </header>
 
-  <div class="ambassador-note">
-    <p><strong>Campus Ambassador Application</strong> — A 3rd-year CSE student at Jahangirnagar University with hands-on experience in UX/UI design, frontend development, and machine learning. Active community builder with leadership roles across multiple university organizations and a proven track record of initiative and collaboration.</p>
-  </div>
+  <section class="summary-box">
+    <p>
+      <strong>Campus Ambassador Application</strong> — A dedicated 3rd-year Computer Science student at Jahangirnagar University. 
+      Combining technical expertise in Frontend Engineering and Machine Learning with a leadership background as a Startup CTO and Core IT Head. 
+      Passionate about bridging technical communities and scaling heritage-focused digital products.
+    </p>
+  </section>
 
   <div class="two-col">
-    <div class="main-col">
-
-      <div class="section">
-        <p class="section-label">Education</p>
+    <main class="main-col">
+      <section class="section">
+        <h2 class="section-label">Experience & Leadership</h2>
+        
         <div class="exp-item">
-          <div class="exp-title">B.Sc. in Computer Science & Engineering</div>
-          <div class="exp-org">Jahangirnagar University</div>
-          <div class="exp-date">2022 – Present &nbsp;·&nbsp; 3rd Year</div>
-          <div class="exp-desc">Current CGPA: <strong>3.80 / 4.00</strong>. Coursework spans algorithms, machine learning, software engineering, and embedded systems.</div>
-        </div>
-      </div>
-
-      <div class="section">
-        <p class="section-label">Experience & Leadership</p>
-
-        <div class="exp-item">
-          <div class="exp-title">Chief Technology Officer</div>
-          <div class="exp-org">Somagoam &nbsp;·&nbsp; Startup</div>
-          <div class="exp-date">Ongoing &nbsp;·&nbsp; somagoam.com</div>
-          <div class="exp-desc">Leading technology strategy for an e-commerce platform startup. Overseeing full product development, architecture decisions, and tech team direction.</div>
-        </div>
-
-        <div class="exp-item">
-          <div class="exp-title">IT Executive</div>
-          <div class="exp-org">JUAS — Jahangirnagar University Astronomical Society</div>
-          <div class="exp-date">Ongoing</div>
-          <div class="exp-desc">Managing digital infrastructure and IT operations for the university astronomical society.</div>
-        </div>
-
-        <div class="exp-item">
-          <div class="exp-title">Co-Head of IT</div>
-          <div class="exp-org">JUSC — Jahangirnagar University Science Club</div>
-          <div class="exp-date">Ongoing</div>
-          <div class="exp-desc">Co-leading the IT division; developed and maintain the official JUSC website. Spearheaded technical planning for major events including Fresher Integration 2026 and Ifter Evening 2026, directly managing event strategy and execution as core planner.</div>
-        </div>
-
-        <div class="exp-item">
-          <div class="exp-title">Member</div>
-          <div class="exp-org">Jahangirnagar University Robotics Club</div>
-          <div class="exp-date">Ongoing</div>
-          <div class="exp-desc">Active member contributing to robotics projects and interdisciplinary tech initiatives.</div>
-        </div>
-
-      </div>
-
-      <div class="section">
-        <p class="section-label">Projects</p>
-        <div class="exp-item">
-          <div class="exp-title">Somagoam E-Commerce Platform</div>
-          <div class="exp-org">CTO &amp; Co-founder</div>
-          <div class="exp-desc">End-to-end product ownership of a live e-commerce platform — from UX/UI design through frontend implementation and system architecture.</div>
-        </div>
-        <div class="exp-item">
-          <div class="exp-title">JUSC Official Website</div>
-          <div class="exp-org">Developer &nbsp;·&nbsp; Ongoing</div>
-          <div class="exp-desc">Designed and developed the official web presence for the Jahangirnagar University Science Club using React, Vite, and Tailwind CSS.</div>
-        </div>
-        <div class="exp-item">
-          <div class="exp-title">3D Design Explorations</div>
-          <div class="exp-org">Personal — Blender</div>
-          <div class="exp-desc">Self-taught explorations in 3D modelling and visual design, with several completed pieces.</div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="side-col">
-
-      <div class="section">
-        <p class="section-label">At a Glance</p>
-        <div class="stat-row">
-          <div class="stat-box"><div class="stat-num">3.80</div><div class="stat-lbl">CGPA</div></div>
-          <div class="stat-box"><div class="stat-num">3rd</div><div class="stat-lbl">Year</div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-box"><div class="stat-num">3</div><div class="stat-lbl">Orgs</div></div>
-          <div class="stat-box"><div class="stat-num">2</div><div class="stat-lbl">Events led</div></div>
-        </div>
-      </div>
-
-      <div class="section">
-        <p class="section-label">Skills</p>
-        <div class="skill-group">
-          <div class="skill-group-label">Design</div>
-          <div class="skills-wrap">
-            <span class="pill accent">UX/UI</span>
-            <span class="pill accent">Figma</span>
-            <span class="pill accent">Logo Design</span>
-            <span class="pill">Blender 3D</span>
+          <div class="exp-header">
+            <span class="exp-title">Chief Technology Officer</span>
+            <span class="exp-date">Active</span>
           </div>
+          <div class="exp-org">Somagom (Heritage E-Commerce Startup)</div>
+          <p class="exp-desc">Leading the technical vision and product design for a luxury heritage platform.</p>
+          <ul class="bullet-list">
+            <li>Architected the frontend using React.js and managed CI/CD deployments.</li>
+            <li>Directing UI/UX strategy to target high-net-worth and diaspora markets.</li>
+            <li>Overseeing full-stack integration and technical team workflows.</li>
+          </ul>
         </div>
-        <div class="skill-group">
-          <div class="skill-group-label">Frontend</div>
-          <div class="skills-wrap">
-            <span class="pill accent">React</span>
-            <span class="pill">Vite</span>
-            <span class="pill">Tailwind CSS</span>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-title">Co-Head of IT & Core Planner</span>
+            <span class="exp-date">2024 — Present</span>
           </div>
+          <div class="exp-org">JU Science Club (JUSC)</div>
+          <ul class="bullet-list">
+            <li>Spearheaded technical operations for <strong>Fresher Integration 2026</strong>.</li>
+            <li>Developed and currently maintain the official club web ecosystem.</li>
+            <li>Manage IT logistics for seminars, workshops, and large-scale science festivals.</li>
+          </ul>
         </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-title">IT Executive</span>
+            <span class="exp-date">Ongoing</span>
+          </div>
+          <div class="exp-org">Jahangirnagar University Adventure Club(JUAS)</div>
+          <p class="exp-desc">Managing digital infrastructure and providing technical support for society initiatives.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-label">Notable Projects</h2>
+        <div class="exp-item">
+          <div class="exp-title">E-Commerce Platform for Somagoam</div>
+          <div class="exp-org">CTO of Somagoam</div>
+          <p class="exp-desc">Designed and developed a full-stack e-commerce solution for a luxury heritage brand.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-title">JUSC Official Web Portal</div>
+          <div class="exp-org">Developer</div>
+          <p class="exp-desc">Designing and developing the frontend using HTML and CSS.</p>
+        </div>
+      </section>
+    </main>
+
+    <aside class="side-col">
+      <section class="section">
+        <h2 class="section-label">Education</h2>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-val">3.80</div><div class="stat-lab">CGPA</div></div>
+          <div class="stat-card"><div class="stat-val">3rd</div><div class="stat-lab">Year</div></div>
+        </div>
+        <p style="font-size: 15px; font-weight: 700; margin-bottom: 2px;">B.Sc. in CSE</p>
+        <p style="font-size: 14px; color: var(--text-sub);">Jahangirnagar University</p>
+      </section>
+
+      <section class="section">
+        <h2 class="section-label">Competencies</h2>
         <div class="skill-group">
-          <div class="skill-group-label">Languages</div>
-          <div class="skills-wrap">
+          <div class="skill-cat">Engineering</div>
+          <div class="pill-wrap">
+            <span class="pill bold">React</span>
+            <span class="pill bold">JavaScript</span>
             <span class="pill">Python</span>
-            <span class="pill">C</span>
             <span class="pill">C++</span>
-            <span class="pill">Java</span>
-            <span class="pill">MATLAB</span>
-            <span class="pill">Arduino</span>
+            <span class="pill">Git</span>
           </div>
         </div>
         <div class="skill-group">
-          <div class="skill-group-label">ML / Data</div>
-          <div class="skills-wrap">
-            <span class="pill accent">Machine Learning</span>
-            <span class="pill">NumPy</span>
-            <span class="pill">Pandas</span>
-            <span class="pill">Matplotlib</span>
+          <div class="skill-cat">Design & ML</div>
+          <div class="pill-wrap">
+            <span class="pill bold">Figma UI/UX</span>
+            <span class="pill">Blender 3D</span>
             <span class="pill">Scikit-learn</span>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="section">
-        <p class="section-label">Achievement</p>
-        <div class="award-item">
-          <div class="award-icon"><i class="ti ti-trophy" aria-hidden="true"></i></div>
-          <div class="award-text">
-            <div class="award-name">UIHP Winner</div>
-            <div class="award-sub">Business Competition · 2nd Year</div>
-            <div class="award-name">JUSC Honor Award</div>
-            <div class="award-sub">Jahangirnagar University Science Club · 2nd Year</div>
-
-          </div>
+      <section class="section">
+        <h2 class="section-label">Achievements</h2>
+        <div class="exp-item">
+          <div class="exp-title" style="font-size: 14.5px;">Business Competition Winner</div>
+          <div class="exp-org">UIHP Program</div>
         </div>
-      </div>
-
-      <div class="section">
-        <p class="section-label">Interests</p>
-        <div class="interest-row">
-          <div class="interest-tag"><i class="ti ti-atom" aria-hidden="true"></i> Quantum Physics &amp; Particle Physics &amp; Research</div>
-          <div class="interest-tag"><i class="ti ti-rocket" aria-hidden="true"></i> Development & Data analysis & Business</div>
-          <div class="interest-tag"><i class="ti ti-users" aria-hidden="true"></i> Volunteering &amp; Seminars</div>
-          <div class="interest-tag"><i class="ti ti-3d-cube-sphere" aria-hidden="true"></i> 3D &amp; Generative Design</div>
+        <div class="exp-item">
+          <div class="exp-title" style="font-size: 14.5px;">Honor Award</div>
+          <div class="exp-org">JU Science Club</div>
         </div>
-      </div>
+      </section>
 
-      <div class="section">
-        <p class="section-label">Community</p>
-        <div class="exp-desc" style="font-size:12.5px; line-height:1.7;">Regular seminar attendee and active volunteer. Participates in cross-disciplinary university events, with a passion for connecting technical communities and making science accessible.</div>
-      </div>
-
-    </div>
+      <section class="section">
+        <h2 class="section-label">Interests</h2>
+        <div class="pill-wrap">
+          <span class="pill">Quantum Physics</span>
+          <span class="pill">Heritage Tech</span>
+          <span class="pill">3D Design</span>
+          <span class="pill">Volunteering</span>
+        </div>
+      </section>
+    </aside>
   </div>
 </div>
